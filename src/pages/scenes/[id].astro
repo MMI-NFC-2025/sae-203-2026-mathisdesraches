@@ -1,0 +1,231 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const scenes = [
+  {
+    id: "scene-1",
+    nom: "Scène 1",
+    description:
+      "La Scène 1 accueille les performances majeures du festival dans une atmosphère immersive et fédératrice.",
+    localisation: "Esplanade centrale",
+    capacite: "2500 personnes",
+    image: "/images/scene1.png",
+  },
+  {
+    id: "scene-2",
+    nom: "Scène 2",
+    description:
+      "La Scène 2 propose une programmation rythmée et accessible, idéale pour découvrir les artistes du moment.",
+    localisation: "Jardin est",
+    capacite: "1800 personnes",
+    image: "/images/scene2.png",
+  },
+  {
+    id: "scene-3",
+    nom: "Scène 3",
+    description:
+      "La Scène 3 met en avant des univers plus expérimentaux et des performances à forte identité visuelle.",
+    localisation: "Cour nord",
+    capacite: "1200 personnes",
+    image: "/images/scene3.png",
+  },
+  {
+    id: "scene-4",
+    nom: "Scène 4",
+    description:
+      "La Scène 4 offre un cadre plus intimiste pour profiter pleinement des concerts et des découvertes musicales.",
+    localisation: "Terrasse ouest",
+    capacite: "900 personnes",
+    image: "/images/scene4.png",
+  },
+];
+
+const artistes = [
+  { nom: "Carley Jener", scene: "Scène 1", image: "/images/carley.png" },
+  { nom: "Kira Montrel", scene: "Scène 4", image: "/images/kira.png" },
+  { nom: "Orion Trellian", scene: "Scène 3", image: "/images/orion.png" },
+  { nom: "Eden Kaloris", scene: "Scène 2", image: "/images/eden.png" },
+
+  { nom: "Jaden Folmar", scene: "Scène 4", image: "/images/jaden.png" },
+  { nom: "Silas Heraven", scene: "Scène 2", image: "/images/silas.png" },
+  { nom: "Maël Drovensky", scene: "Scène 1", image: "/images/mael.png" },
+  { nom: "Tarek Solvim", scene: "Scène 3", image: "/images/tarek.png" },
+
+  { nom: "Mira Olestand", scene: "Scène 2", image: "/images/mira.png" },
+  { nom: "Lioren Savrek", scene: "Scène 3", image: "/images/lioren.png" },
+  { nom: "Deyan Morliss", scene: "Scène 1", image: "/images/deyan.png" },
+  { nom: "Neriah Volsten", scene: "Scène 4", image: "/images/neriah.png" },
+];
+
+const { id } = Astro.params;
+
+const scene = scenes.find((s) => s.id === id);
+
+const artistesScene = artistes.filter((a) => a.scene === scene?.nom);
+---
+
+<Layout title={`${scene.nom} - Jumelage`}>
+<Header />
+
+<main class="bg-bg pt-24 md:pt-28">
+
+<section class="px-4 pb-20 md:px-8 md:pb-28">
+<div class="mx-auto max-w-6xl">
+
+<p class="mb-4 text-xs font-bold uppercase tracking-festival text-black/50">
+Festival Jumelage 2026
+</p>
+
+<h1 class="text-4xl font-black uppercase tracking-festival text-[#273b6a] md:text-6xl">
+{scene.nom}
+</h1>
+
+<p class="mt-6 max-w-xl text-base leading-8 text-black/70">
+{scene.description}
+</p>
+
+</div>
+</section>
+
+<section class="px-4 pb-20 md:px-8 md:pb-28">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="grid gap-10 md:grid-cols-[1fr_0.9fr] md:gap-16">
+
+<img
+src={scene.image}
+alt={scene.nom}
+class="w-full object-cover"
+/>
+
+<div class="bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
+
+<h2 class="text-2xl font-black uppercase tracking-festival text-[#273b6a] md:text-3xl">
+Informations
+</h2>
+
+<div class="mt-8 space-y-6">
+
+<div>
+<p class="text-xs font-bold uppercase tracking-festival text-black/45">
+Localisation
+</p>
+<p class="mt-2 text-sm leading-6 text-black/75 md:text-base">
+{scene.localisation}
+</p>
+</div>
+
+<div>
+<p class="text-xs font-bold uppercase tracking-festival text-black/45">
+Capacité
+</p>
+<p class="mt-2 text-sm leading-6 text-black/75 md:text-base">
+{scene.capacite}
+</p>
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="px-4 pb-20 md:px-8 md:pb-28">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+
+<h2 class="text-3xl font-black uppercase tracking-festival text-[#273b6a] md:text-4xl">
+Artistes sur cette scène
+</h2>
+
+<span class="text-xs font-bold uppercase tracking-festival text-black/40">
+Programmation
+</span>
+
+</div>
+
+<div class="grid grid-cols-2 gap-4 md:grid-cols-4">
+
+{artistesScene.map((artiste) => (
+
+<article class="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-1">
+
+<img
+src={artiste.image}
+alt={artiste.nom}
+class="h-40 w-full object-cover"
+/>
+
+<div class="px-4 py-4">
+
+<h3 class="text-sm font-black uppercase tracking-wide text-[#273b6a] md:text-base">
+{artiste.nom}
+</h3>
+
+</div>
+
+</article>
+
+))}
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-darkJ px-4 py-12 text-white md:px-8 md:py-16">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+
+<div>
+
+<h2 class="text-3xl font-black uppercase tracking-festival md:text-4xl">
+Découvrez aussi
+</h2>
+
+<p class="mt-5 max-w-2xl text-sm leading-7 text-white/85 md:text-base">
+Explorez la programmation complète du festival et les autres scènes.
+</p>
+
+</div>
+
+<div class="grid gap-3 md:grid-cols-2">
+
+<a
+href="/scenes"
+class="bg-blueJ px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+>
+Toutes les scènes
+</a>
+
+<a
+href="/programme"
+class="border border-white px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+>
+Voir le programme
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<Footer />
+</Layout>

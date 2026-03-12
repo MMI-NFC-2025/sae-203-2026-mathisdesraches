@@ -1,0 +1,249 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+import Footer from "../../components/Footer.astro";
+
+const artistes = [
+  {
+    id: "carley-jener",
+    nom: "Carley Jener",
+    date: "Vendredi 28 août",
+    scene: "Scène 1",
+    image: "/images/carley.png",
+    description:
+      "Carley Jener propose une performance intense mêlant énergie scénique et univers sonore immersif."
+  },
+  {
+    id: "kira-montrel",
+    nom: "Kira Montrel",
+    date: "Vendredi 28 août",
+    scene: "Scène 4",
+    image: "/images/kira.png",
+    description:
+      "Kira Montrel développe un univers musical singulier et poétique, entre textures électroniques et rythmes organiques."
+  },
+  {
+    id: "orion-trellian",
+    nom: "Orion Trellian",
+    date: "Vendredi 28 août",
+    scene: "Scène 3",
+    image: "/images/orion.png",
+    description:
+      "Orion Trellian explore des sonorités puissantes et hypnotiques dans des performances visuelles marquantes."
+  },
+  {
+    id: "eden-kaloris",
+    nom: "Eden Kaloris",
+    date: "Vendredi 28 août",
+    scene: "Scène 2",
+    image: "/images/eden.png",
+    description:
+      "Eden Kaloris mélange influences contemporaines et rythmiques modernes dans une proposition musicale vibrante."
+  },
+  {
+    id: "jaden-folmar",
+    nom: "Jaden Folmar",
+    date: "Samedi 29 août",
+    scene: "Scène 4",
+    image: "/images/jaden.png",
+    description:
+      "Jaden Folmar se distingue par une présence scénique marquée et un univers sonore captivant."
+  },
+  {
+    id: "silas-heraven",
+    nom: "Silas Heraven",
+    date: "Samedi 29 août",
+    scene: "Scène 2",
+    image: "/images/silas.png",
+    description:
+      "Silas Heraven développe une esthétique musicale immersive entre profondeur sonore et énergie live."
+  },
+  {
+    id: "mael-drovensky",
+    nom: "Maël Drovensky",
+    date: "Samedi 29 août",
+    scene: "Scène 1",
+    image: "/images/mael.png",
+    description:
+      "Maël Drovensky propose une performance intense portée par une identité artistique forte."
+  },
+  {
+    id: "tarek-solvim",
+    nom: "Tarek Solvim",
+    date: "Samedi 29 août",
+    scene: "Scène 3",
+    image: "/images/tarek.png",
+    description:
+      "Tarek Solvim explore une musique rythmique et immersive qui s’exprime pleinement sur scène."
+  },
+  {
+    id: "mira-olestand",
+    nom: "Mira Olestand",
+    date: "Dimanche 30 août",
+    scene: "Scène 2",
+    image: "/images/mira.png",
+    description:
+      "Mira Olestand développe un univers artistique sensible et expressif."
+  },
+  {
+    id: "lioren-savrek",
+    nom: "Lioren Savrek",
+    date: "Dimanche 30 août",
+    scene: "Scène 3",
+    image: "/images/lioren.png",
+    description:
+      "Lioren Savrek propose une performance immersive mêlant textures sonores et atmosphères puissantes."
+  },
+  {
+    id: "deyan-morliss",
+    nom: "Deyan Morliss",
+    date: "Dimanche 30 août",
+    scene: "Scène 1",
+    image: "/images/deyan.png",
+    description:
+      "Deyan Morliss développe une esthétique musicale forte et énergique."
+  },
+  {
+    id: "neriah-volsten",
+    nom: "Neriah Volsten",
+    date: "Dimanche 30 août",
+    scene: "Scène 4",
+    image: "/images/neriah.png",
+    description:
+      "Neriah Volsten explore un univers sonore captivant et dynamique."
+  }
+];
+
+const { id } = Astro.params;
+
+const artiste = artistes.find((a) => a.id === id);
+---
+
+<Layout title={`${artiste.nom} - Jumelage`}>
+<Header />
+
+<main class="bg-bg pt-24 md:pt-28">
+
+<section class="px-4 pb-20 md:px-8 md:pb-28">
+<div class="mx-auto max-w-6xl">
+
+<p class="mb-4 text-xs font-bold uppercase tracking-festival text-black/50">
+Festival Jumelage 2026
+</p>
+
+<h1 class="text-4xl font-black uppercase tracking-festival text-[#273b6a] md:text-6xl">
+{artiste.nom}
+</h1>
+
+</div>
+</section>
+
+<section class="px-4 pb-20 md:px-8 md:pb-28">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="grid gap-10 md:grid-cols-[1fr_0.9fr] md:gap-16">
+
+<img
+src={artiste.image}
+alt={artiste.nom}
+class="w-full object-cover"
+/>
+
+<div class="bg-white px-6 py-8 shadow-sm md:px-8 md:py-10">
+
+<h2 class="text-2xl font-black uppercase tracking-festival text-[#273b6a] md:text-3xl">
+Informations
+</h2>
+
+<div class="mt-8 space-y-6">
+
+<div>
+<p class="text-xs font-bold uppercase tracking-festival text-black/45">
+Date
+</p>
+<p class="mt-2 text-sm leading-6 text-black/75 md:text-base">
+{artiste.date}
+</p>
+</div>
+
+<div>
+<p class="text-xs font-bold uppercase tracking-festival text-black/45">
+Scène
+</p>
+<p class="mt-2 text-sm leading-6 text-black/75 md:text-base">
+{artiste.scene}
+</p>
+</div>
+
+</div>
+
+<p class="mt-8 text-sm leading-7 text-black/70 md:text-base">
+{artiste.description}
+</p>
+
+<div class="mt-10">
+
+<a
+href="/artistes"
+class="inline-flex bg-blueJ px-5 py-4 text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+>
+Retour aux artistes
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="bg-darkJ px-4 py-12 text-white md:px-8 md:py-16">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+
+<div>
+
+<h2 class="text-3xl font-black uppercase tracking-festival md:text-4xl">
+Découvrez le festival
+</h2>
+
+<p class="mt-5 max-w-2xl text-sm leading-7 text-white/85 md:text-base">
+Explorez aussi les scènes et la programmation complète du festival.
+</p>
+
+</div>
+
+<div class="grid gap-3 md:grid-cols-2">
+
+<a
+href="/programme"
+class="bg-blueJ px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+>
+Voir le programme
+</a>
+
+<a
+href="/scenes"
+class="border border-white px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+>
+Voir les scènes
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</main>
+
+<Footer />
+</Layout>

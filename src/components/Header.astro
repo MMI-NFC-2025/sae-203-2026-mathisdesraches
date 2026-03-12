@@ -1,0 +1,140 @@
+---
+const links = [
+  { href: "/", label: "Accueil" },
+  { href: "/programme", label: "Programme" },
+  { href: "/artistes", label: "Artistes" },
+  { href: "/scenes", label: "Scènes" },
+  { href: "/infos-pratiques", label: "Infos pratiques" },
+  { href: "/a-propos", label: "À propos" },
+  { href: "/contact", label: "Contact" },
+];
+
+const currentPath = Astro.url.pathname;
+---
+
+<header class="fixed inset-x-0 top-0 z-50 px-4 pt-4 md:px-8 md:pt-6">
+  <div class="mx-auto max-w-6xl">
+    <div class="flex items-center justify-between bg-white/90 px-4 py-3 shadow-sm backdrop-blur md:px-6 md:py-4">
+      <a href="/" class="flex items-center">
+        <img
+          src="/images/logo.png"
+          alt="Festival Jumelage"
+          class="h-8 w-auto md:h-10"
+        />
+      </a>
+
+      <button
+        id="menu-toggle"
+        type="button"
+        aria-label="Ouvrir le menu"
+        aria-expanded="false"
+        class="flex h-10 w-10 items-center justify-center bg-blueJ text-white lg:hidden"
+      >
+        <span class="sr-only">Menu</span>
+
+        <span class="flex flex-col gap-1.5">
+          <span class="block h-0.5 w-5 bg-white"></span>
+          <span class="block h-0.5 w-5 bg-white"></span>
+          <span class="block h-0.5 w-5 bg-white"></span>
+        </span>
+      </button>
+
+      <nav class="hidden lg:block">
+        <ul class="flex items-center gap-6">
+          {links.map((link) => {
+            const isActive = currentPath === link.href;
+            return (
+              <li>
+                <a
+                  href={link.href}
+                  class={`text-xs font-bold uppercase tracking-festival transition ${
+                    isActive
+                      ? "text-[#273b6a]"
+                      : "text-black/65 hover:text-[#273b6a]"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="pointer-events-none fixed inset-0 z-40 opacity-0 transition duration-300 lg:hidden"
+  >
+    <div id="menu-backdrop" class="absolute inset-0 bg-black/45"></div>
+
+    <div
+      id="menu-panel"
+      class="absolute right-0 top-0 flex h-full w-[85%] max-w-[340px] translate-x-full flex-col bg-[#f3f3f3] px-6 py-6 transition duration-300"
+    >
+      <div class="flex items-center justify-between">
+        <p class="text-lg font-black uppercase tracking-festival text-[#273b6a]">
+          Menu
+        </p>
+
+        <button
+          id="menu-close"
+          type="button"
+          aria-label="Fermer le menu"
+          class="flex h-10 w-10 items-center justify-center bg-blueJ text-white"
+        >
+          ✕
+        </button>
+      </div>
+
+      <nav class="mt-10">
+        <ul class="flex flex-col">
+          {links.map((link) => {
+            const isActive = currentPath === link.href;
+            return (
+              <li class="border-b border-black/10">
+                <a
+                  href={link.href}
+                  class={`block py-4 text-sm font-bold uppercase tracking-festival ${
+                    isActive ? "text-[#273b6a]" : "text-black/70"
+                  }`}
+                >
+                  {link.label}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const closeBtn = document.getElementById("menu-close");
+  const mobileMenu = document.getElementById("mobile-menu");
+  const menuPanel = document.getElementById("menu-panel");
+  const backdrop = document.getElementById("menu-backdrop");
+
+  function openMenu() {
+    mobileMenu?.classList.remove("pointer-events-none", "opacity-0");
+    mobileMenu?.classList.add("opacity-100");
+    menuPanel?.classList.remove("translate-x-full");
+    toggle?.setAttribute("aria-expanded", "true");
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    mobileMenu?.classList.add("pointer-events-none", "opacity-0");
+    mobileMenu?.classList.remove("opacity-100");
+    menuPanel?.classList.add("translate-x-full");
+    toggle?.setAttribute("aria-expanded", "false");
+    document.body.style.overflow = "";
+  }
+
+  toggle?.addEventListener("click", openMenu);
+  closeBtn?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+</script>

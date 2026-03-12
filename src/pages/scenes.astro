@@ -1,0 +1,189 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+
+const scenes = [
+  {
+    id: "scene-1",
+    nom: "Scène 1",
+    description:
+      "La Scène 1 accueille les performances majeures du festival dans une atmosphère immersive et fédératrice.",
+    localisation: "Esplanade centrale",
+    capacite: "2500 personnes",
+    image: "/images/scene1.png",
+  },
+  {
+    id: "scene-2",
+    nom: "Scène 2",
+    description:
+      "La Scène 2 propose une programmation rythmée et accessible, idéale pour découvrir les artistes du moment.",
+    localisation: "Jardin est",
+    capacite: "1800 personnes",
+    image: "/images/scene2.png",
+  },
+  {
+    id: "scene-3",
+    nom: "Scène 3",
+    description:
+      "La Scène 3 met en avant des univers plus expérimentaux et des performances à forte identité visuelle.",
+    localisation: "Cour nord",
+    capacite: "1200 personnes",
+    image: "/images/scene3.png",
+  },
+  {
+    id: "scene-4",
+    nom: "Scène 4",
+    description:
+      "La Scène 4 offre un cadre plus intimiste pour profiter pleinement des concerts et des découvertes musicales.",
+    localisation: "Terrasse ouest",
+    capacite: "900 personnes",
+    image: "/images/scene4.png",
+  },
+];
+---
+
+<Layout title="Scènes - Jumelage">
+  <Header />
+
+  <main class="bg-bg pt-24 md:pt-28">
+    <section class="px-4 pb-20 md:px-8 md:pb-28">
+      <div class="mx-auto max-w-6xl">
+        <p class="mb-4 text-xs font-bold uppercase tracking-festival text-black/50">
+          Festival Jumelage 2026
+        </p>
+
+        <div class="grid gap-10 md:grid-cols-[1.1fr_0.9fr] md:items-end md:gap-16">
+          <div>
+            <h1 class="text-4xl font-black uppercase leading-[0.95] tracking-festival text-[#273b6a] md:text-6xl">
+              Nos<br />scènes
+            </h1>
+
+            <p class="mt-8 max-w-xl text-base leading-8 text-black/70">
+              Découvrez les différents espaces du festival, leurs ambiances,
+              leurs capacités et les lieux qui donnent vie à la programmation
+              de cette édition 2026.
+            </p>
+          </div>
+
+          <div class="bg-blueJ px-6 py-8 text-white md:px-8 md:py-10">
+            <p class="text-xs font-bold uppercase tracking-festival text-white/70">
+              À découvrir
+            </p>
+
+            <p class="mt-4 text-2xl font-black uppercase tracking-wide md:text-3xl">
+              4 scènes, 4 atmosphères
+            </p>
+
+            <p class="mt-5 text-sm leading-7 text-white/90 md:text-base">
+              Chaque scène possède sa propre identité et contribue à créer une
+              expérience de festival riche, vivante et accessible à tous les publics.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 pb-20 md:px-8 md:pb-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <h2 class="text-3xl font-black uppercase tracking-festival text-[#273b6a] md:text-4xl">
+            Les scènes du festival
+          </h2>
+
+          <span class="text-xs font-bold uppercase tracking-festival text-black/40">
+            Explorez les lieux du festival
+          </span>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {scenes.map((scene) => (
+            <article class="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-1">
+              <img
+                src={scene.image}
+                alt={scene.nom}
+                class="h-64 w-full object-cover"
+              />
+
+              <div class="px-6 py-8 md:px-8 md:py-10">
+                <div class="flex flex-col gap-3 md:flex-row md:items-start md:justify-between">
+                  <h3 class="text-2xl font-black uppercase tracking-wide text-[#273b6a] md:text-3xl">
+                    {scene.nom}
+                  </h3>
+
+                  <span class="inline-flex w-fit bg-[#eef4ff] px-3 py-2 text-[11px] font-bold uppercase tracking-festival text-[#273b6a]">
+                    {scene.capacite}
+                  </span>
+                </div>
+
+                <p class="mt-5 text-sm leading-7 text-black/70 md:text-base">
+                  {scene.description}
+                </p>
+
+                <div class="mt-6 space-y-2">
+                  <p class="text-xs font-bold uppercase tracking-festival text-black/45">
+                    Localisation
+                  </p>
+                  <p class="text-sm leading-6 text-black/75 md:text-base">
+                    {scene.localisation}
+                  </p>
+                </div>
+
+                <div class="mt-8">
+                  <a
+                    href={`/scenes/${scene.id}`}
+                    class="inline-flex bg-blueJ px-5 py-4 text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+                  >
+                    En savoir plus
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-darkJ px-4 py-12 text-white md:px-8 md:py-16">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid gap-8 md:grid-cols-[1fr_auto] md:items-end">
+          <div>
+            <h2 class="text-3xl font-black uppercase tracking-festival md:text-4xl">
+              Continuez votre exploration
+            </h2>
+
+            <p class="mt-5 max-w-2xl text-sm leading-7 text-white/85 md:text-base">
+              Consultez aussi la programmation et les artistes pour découvrir
+              comment chaque scène s’inscrit dans l’expérience complète du festival.
+            </p>
+          </div>
+
+          <div class="grid gap-3 md:grid-cols-3">
+            <a
+              href="/programme"
+              class="bg-blueJ px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:min-w-[180px] md:text-sm"
+            >
+              Voir le programme
+            </a>
+
+            <a
+              href="/artistes"
+              class="bg-white px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-blackJ md:min-w-[180px] md:text-sm"
+            >
+              Voir les artistes
+            </a>
+
+            <a
+              href="/infos-pratiques"
+              class="border border-white px-5 py-4 text-center text-xs font-bold uppercase tracking-festival text-white md:min-w-[180px] md:text-sm"
+            >
+              Infos pratiques
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
+</Layout>

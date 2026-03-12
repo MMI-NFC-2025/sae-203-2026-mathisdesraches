@@ -1,10 +1,280 @@
 ---
-import Layout from '../layouts/Layout.astro';
+import Layout from "../layouts/Layout.astro";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+const artistes = [
+  {
+    nom: "Carley Jener",
+    date: "Vendredi 28 août",
+    image: "/images/carley.png",
+  },
+  {
+    nom: "Kira Montrel",
+    date: "Vendredi 28 août",
+    image: "/images/kira.png",
+  },
+  {
+    nom: "Orion Trellian",
+    date: "Vendredi 28 août",
+    image: "/images/orion.png",
+  },
+  {
+    nom: "Eden Kaloris",
+    date: "Vendredi 28 août",
+    image: "/images/eden.png",
+  },
+];
+
+const acces = [
+  {
+    titre: "Nos scènes",
+    texte:
+      "Découvrez les différents espaces du festival, leurs ambiances et les lieux qui donnent vie à la programmation.",
+    lien: "/scenes",
+    image: "/images/hero_4scene.png",
+  },
+  {
+    titre: "Programme",
+    texte:
+      "Explorez l’ensemble de la programmation, jour par jour, pour préparer votre parcours pendant le festival.",
+    lien: "/programme",
+    image: "/images/hero_programme.png",
+  },
+  {
+    titre: "Infos pratiques",
+    texte:
+      "Retrouvez toutes les informations essentielles pour organiser votre venue et profiter pleinement du festival.",
+    lien: "/infos-pratiques",
+    image: "/images/hero_infos_pratiques.png",
+  },
+  {
+    titre: "À propos",
+    texte:
+      "Découvrez l’histoire, les valeurs et la vision qui façonnent l’identité du Festival Jumelage.",
+    lien: "/a-propos",
+    image: "/images/hero_apropos.png",
+  },
+];
+
+const valeurs = [
+  {
+    titre: "Accessibilité",
+    texte:
+      "Le festival s’engage à accueillir tous les publics dans un cadre ouvert, inclusif et pensé pour faciliter l’accès à la culture.",
+  },
+  {
+    titre: "Convivialité",
+    texte:
+      "Chaque édition est imaginée comme un moment de rencontre, de partage et d’échange entre artistes, publics et territoire.",
+  },
+  {
+    titre: "Esprit local",
+    texte:
+      "Jumelage valorise les richesses du territoire, les initiatives locales et les liens entre les communautés.",
+  },
+];
 ---
 
-<Layout>
-	<h1>Welcome to Astro!</h1>
+<Layout title="Jumelage - Accueil">
+  <Header />
+
+  <main class="bg-bg">
+    <section class="relative min-h-screen overflow-hidden">
+      <img
+        src="/images/hero_accueil.png"
+        alt="Festival Jumelage"
+        class="absolute inset-0 h-full w-full object-cover"
+      />
+
+      <div class="absolute inset-0 bg-black/30"></div>
+
+      <div class="relative flex min-h-screen items-end px-4 pb-12 pt-32 md:px-8 md:pb-16 md:pt-40">
+        <div class="mx-auto w-full max-w-6xl">
+          <div class="max-w-3xl">
+            <p class="mb-4 text-xs font-bold uppercase tracking-festival text-white/80 md:text-sm">
+              Festival 2026
+            </p>
+
+            <h1 class="text-5xl font-black uppercase leading-[0.92] tracking-festival text-white md:text-7xl">
+              Jumelage<br />
+              Édition 2026
+            </h1>
+
+            <p class="mt-6 text-sm font-bold uppercase tracking-festival text-white/90 md:text-base">
+              28 août → 30 août
+            </p>
+
+            <p class="mt-6 max-w-2xl text-sm leading-7 text-white/90 md:text-base md:leading-8">
+              Le Festival Jumelage célèbre les rencontres entre cultures et territoires.
+              Une édition conviviale, accessible à tous, où l’esprit local prend vie
+              à travers une programmation vivante et une expérience partagée.
+            </p>
+
+            <div class="mt-8 flex flex-wrap gap-3">
+              <a
+                href="/programme"
+                class="bg-blueJ px-5 py-4 text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+              >
+                Voir le programme
+              </a>
+
+              <a
+                href="/artistes"
+                class="border border-white px-5 py-4 text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+              >
+                Découvrir les artistes
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-20 md:px-8 md:py-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="grid gap-10 md:grid-cols-[1fr_1fr] md:items-end md:gap-16">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-festival text-black/45">
+              Le festival
+            </p>
+
+            <h2 class="mt-4 text-3xl font-black uppercase tracking-festival text-[#273b6a] md:text-4xl">
+              Une histoire de rencontres
+            </h2>
+          </div>
+
+          <p class="text-sm leading-8 text-black/70 md:text-base">
+            Le Festival Jumelage s’inscrit dans une dynamique d’ouverture, de dialogue
+            et de circulation des pratiques culturelles. Pensé comme un temps fort
+            de rassemblement, il réunit artistes, publics et initiatives locales
+            autour d’une programmation accessible et fédératrice.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 pb-20 md:px-8 md:pb-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <h2 class="text-3xl font-black uppercase tracking-festival text-[#273b6a] md:text-4xl">
+            À l’affiche cette année
+          </h2>
+
+          <a
+            href="/artistes"
+            class="text-xs font-bold uppercase tracking-festival text-black/45"
+          >
+            Voir tous les artistes
+          </a>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 xl:grid-cols-4">
+          {artistes.map((artiste) => (
+            <article class="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-1">
+              <img
+                src={artiste.image}
+                alt={artiste.nom}
+                class="h-72 w-full object-cover"
+              />
+
+              <div class="px-6 py-8">
+                <h3 class="text-2xl font-black uppercase tracking-wide text-[#273b6a]">
+                  {artiste.nom}
+                </h3>
+
+                <p class="mt-4 text-sm leading-7 text-black/70">
+                  {artiste.date}
+                </p>
+
+                <div class="mt-6">
+                  <a
+                    href="/artistes"
+                    class="inline-flex bg-blueJ px-5 py-4 text-xs font-bold uppercase tracking-festival text-white"
+                  >
+                    En savoir plus
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-darkJ px-4 py-20 text-white md:px-8 md:py-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10">
+          <p class="text-xs font-bold uppercase tracking-festival text-white/60">
+            Nos engagements
+          </p>
+
+          <h2 class="mt-4 text-3xl font-black uppercase tracking-festival md:text-4xl">
+            Ce qui fait vivre le festival
+          </h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+          {valeurs.map((valeur) => (
+            <article class="bg-white/5 px-6 py-8 md:px-8 md:py-10">
+              <h3 class="text-2xl font-black uppercase tracking-wide text-white">
+                {valeur.titre}
+              </h3>
+
+              <p class="mt-5 text-sm leading-7 text-white/80 md:text-base">
+                {valeur.texte}
+              </p>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <section class="px-4 py-20 md:px-8 md:py-28">
+      <div class="mx-auto max-w-6xl">
+        <div class="mb-10 flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
+          <h2 class="text-3xl font-black uppercase tracking-festival text-[#273b6a] md:text-4xl">
+            Explorer le festival
+          </h2>
+
+          <span class="text-xs font-bold uppercase tracking-festival text-black/40">
+            Préparez votre visite
+          </span>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2">
+          {acces.map((bloc) => (
+            <article class="overflow-hidden bg-white shadow-sm transition duration-300 hover:-translate-y-1">
+              <img
+                src={bloc.image}
+                alt={bloc.titre}
+                class="h-56 w-full object-cover"
+              />
+
+              <div class="px-6 py-8 md:px-8 md:py-10">
+                <h3 class="text-2xl font-black uppercase tracking-wide text-[#273b6a]">
+                  {bloc.titre}
+                </h3>
+
+                <p class="mt-5 text-sm leading-7 text-black/70 md:text-base">
+                  {bloc.texte}
+                </p>
+
+                <div class="mt-8">
+                  <a
+                    href={bloc.lien}
+                    class="inline-flex bg-blueJ px-5 py-4 text-xs font-bold uppercase tracking-festival text-white md:text-sm"
+                  >
+                    En savoir plus
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <Footer />
 </Layout>

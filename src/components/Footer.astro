@@ -1,0 +1,154 @@
+---
+const navigation = [
+  { label: "Accueil", href: "/" },
+  { label: "Programme", href: "/programme" },
+  { label: "Artistes", href: "/artistes" },
+  { label: "Scènes", href: "/scenes" },
+];
+
+const informations = [
+  { label: "Infos pratiques", href: "/infos-pratiques" },
+  { label: "À propos", href: "/a-propos" },
+  { label: "Contact", href: "/contact" },
+];
+
+const reseaux = [
+  { label: "Instagram", href: "#" },
+  { label: "Facebook", href: "#" },
+  { label: "YouTube", href: "#" },
+];
+---
+
+<footer class="bg-darkJ text-white">
+
+<div class="px-4 py-16 md:px-8 md:py-20">
+
+<div class="mx-auto max-w-6xl">
+
+<div class="grid gap-12 md:grid-cols-4">
+
+<div>
+
+<img
+src="/images/logo.png"
+alt="Festival Jumelage"
+class="h-10 w-auto"
+/>
+
+<p class="mt-6 text-sm leading-7 text-white/80">
+Le Festival Jumelage célèbre les rencontres entre cultures et territoires à
+travers une programmation artistique conviviale et accessible.
+</p>
+
+<p class="mt-6 text-xs font-bold uppercase tracking-festival text-white/60">
+28 août → 30 août 2026
+</p>
+
+</div>
+
+<div>
+
+<p class="text-xs font-bold uppercase tracking-festival text-white/60">
+Navigation
+</p>
+
+<ul class="mt-6 space-y-3">
+
+{navigation.map((item) => (
+
+<li>
+<a
+href={item.href}
+class="text-sm text-white/80 transition hover:text-white"
+>
+{item.label}
+</a>
+</li>
+
+))}
+
+</ul>
+
+</div>
+
+<div>
+
+<p class="text-xs font-bold uppercase tracking-festival text-white/60">
+Informations
+</p>
+
+<ul class="mt-6 space-y-3">
+
+{informations.map((item) => (
+
+<li>
+<a
+href={item.href}
+class="text-sm text-white/80 transition hover:text-white"
+>
+{item.label}
+</a>
+</li>
+
+))}
+
+</ul>
+
+</div>
+
+<div>
+
+<p class="text-xs font-bold uppercase tracking-festival text-white/60">
+Réseaux
+</p>
+
+<ul class="mt-6 space-y-3">
+
+{reseaux.map((item) => (
+
+<li>
+<a
+href={item.href}
+class="text-sm text-white/80 transition hover:text-white"
+>
+{item.label}
+</a>
+</li>
+
+))}
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="border-t border-white/10 px-4 py-6 md:px-8">
+
+<div class="mx-auto max-w-6xl flex flex-col gap-3 text-xs text-white/60 md:flex-row md:items-center md:justify-between">
+
+<p>
+© 2026 Festival Jumelage
+</p>
+
+<div class="flex gap-4">
+
+<a href="404.astro" class="hover:text-white transition">
+Mentions légales
+</a>
+
+<a href="404.astro" class="hover:text-white transition">
+Politique de confidentialité
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</footer>
