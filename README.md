@@ -3,3 +3,7 @@
 - Prénom: Mathis
 - url: https://incandescent-sherbet-6aefc0.netlify.app
 
+POCKETBASE :
+
+mathis.desraches@edu.univ-fcomte.fr
+mdp : mathis1234
